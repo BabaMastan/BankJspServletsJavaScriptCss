@@ -69,6 +69,8 @@ public class CustomerInfoDAO {
 			} catch (Exception e){
 				System.out.println(e.getMessage());
 			} finally {
+				session.flush();
+			session.close();
 			}	
 			return customers;
 		}
@@ -100,6 +102,8 @@ public class CustomerInfoDAO {
 		} catch (Exception e){
 			System.out.println(e.getMessage());
 		} finally {
+			session.flush();
+			session.close();
 		}	
 		return Customerinfo;
 	}
@@ -129,6 +133,8 @@ public class CustomerInfoDAO {
 		} catch (Exception e){
 			System.out.println(e.getMessage());
 		} finally {
+			session.flush();
+		session.close();
 		}	
 		double bal= Double.parseDouble(b.getBalance());
 		return bal;
@@ -191,6 +197,8 @@ public class CustomerInfoDAO {
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			} finally {
+				session.flush();
+				session.close();
 			}
 			CustomerInfo newc= new CustomerInfo();
 			 newc=getInfo(b.getUsername());

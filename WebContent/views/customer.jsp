@@ -14,6 +14,8 @@
     <![endif]-->
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
     <script type='text/javascript' src='js/goback.js'></script>
+    <script type='text/javascript' src='js/hideshow.js'></script>
+    <script type='text/javascript' src='js/pageheightadjust.js'></script>
     
 </head>
 
@@ -38,12 +40,15 @@
 		</header>
 		
 		<section id="main-content">
+		<li><button onclick="setheight()" style="color:navy; border:thick; font:cursive; border-radius: 10px;" >Account Info</button></li>
 <div id="guts">
 		
-		  <h2>Account Details</h2>
+		  
 		
 		          <br>
 		          
+<div id="myDiv">   
+<h2>Account Details</h2>  
 <%@page import="java.util.ArrayList"%>
 <%
 CustomerInfo list=(CustomerInfo)request.getAttribute("xyz");
@@ -65,7 +70,7 @@ CustomerInfo list=(CustomerInfo)request.getAttribute("xyz");
 			<li><%=list.getLastvisiteddate() %></li>			
         </ul>
     </div> 	
-</div></Center>
+</div></Center></div>
 <%--<Center><table id ="rcorners2" border="4px"  class="rwd-table">
 <tr>
 <td>

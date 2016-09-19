@@ -13,19 +13,9 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $("#myDiv").toggle();
-    });
-});
-function setheight() {
-	
-    document.getElementById("page-wrap").style.height = "auto";
-    document.getElementById("page-wrap").style.width = "auto";
-}
-</script>
     <script type='text/javascript' src='js/goback.js'></script>
+    <script type='text/javascript' src='js/pageheightadjust.js'></script>
+    <script type='text/javascript' src='js/hideshow.js'></script>
     <script type="text/javascript">
     window.onbeforeunload = function() {
         location.replace("index.html");

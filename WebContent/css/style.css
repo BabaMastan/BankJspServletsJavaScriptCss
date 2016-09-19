@@ -30,7 +30,7 @@ h1 { font: bold 32px Helvetica, Arial, Sans-Serif; letter-spacing: -1px; padding
 p { margin: 0 0 15px 0; }
  
 nav ul { 
-    list-style: none; background: #154c85; padding: 5px 20px; width: 1000px; position: relative; 
+    list-style: none; background: #154c85; padding: 5px 20px; width: inherit; position: relative; 
     left: -9px;
 }
 nav ul li { display: inline; }
@@ -85,16 +85,29 @@ nav ul li a:active, nav ul li a.current {
 	width: 892px; /* total computed width = 222 x 3 + 226 */
 }
 
-#pricing-table .plan {
-	font: 12px 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
+#pricing-table .plan{
+	font: 14px 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
+	font-weight: bold;
 	text-shadow: 0 1px rgba(255,255,255,.8);        
-	background: #000000;      
+	background: #ffffff;      
 	border: 1px solid #ddd;
-	color: #ffff00;
+	color: #0000ff;
 	padding: 20px;
 	width: 180px; /* plan width = 180 + 20 + 20 + 1 + 1 = 222px */      
 	float: left;
 	position: relative;
+}
+#pricing-table .plan:hover{
+	z-index: 2;
+	top: -13px;
+	border-width: 3px;
+	padding: 30px 20px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
+	-webkit-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
+	box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);    
 }
 
 /*#pricing-table #most-popular {

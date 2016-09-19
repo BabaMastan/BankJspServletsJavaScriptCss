@@ -43,6 +43,8 @@ public class LoginDao {
 		} catch (Exception e){
 			System.out.println(e.getMessage());
 		} finally {
+			session.flush();
+			session.close();
 		}	
 		return loginbean.getRole();
 	}
