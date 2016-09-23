@@ -2,6 +2,7 @@ package controller;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,9 +15,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import beans.CustomerInfo;
 import beans.LoginBean;
+import dao.BankUserPhotoDao;
 import dao.CustomerInfoDAO;
 import dao.LoginDao;
 
@@ -76,6 +79,38 @@ public class BankFunctionServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		else if (value.equals("Addphoto"))
+		{
+			String accno= request.getParameter("accno");
+			int acno=Integer.parseInt(accno);
+			Part filePart= request.getPart("img");
+			if (filePart != null) {
+	            // prints out some information for debugging
+	            System.out.println(filePart.getName());
+	            System.out.println(filePart.getSize());
+	            System.out.println(filePart.getContentType());
+	            // obtains input stream of the upload file
+	            InputStream inputStream = filePart.getInputStream();
+	            CustomerInfoDAO c= new CustomerInfoDAO();
+	            String username=c.getName(acno);
+	            BankUserPhotoDao BP= new BankUserPhotoDao();
+	            BP.createConnection();
+	            BP.uploadphoto(username, inputStream);
+	            BP.closeConnection();
+	            ArrayList<CustomerInfo> customers= new ArrayList<CustomerInfo>();
+				customers=c.selectallcustomers();
+				ArrayList <String> user= new ArrayList<String>();
+				for(int i=0;i<customers.size();i++)
+				{
+					user.set(i,customers.get(i).getUsername());
+				}
+				request.setAttribute("key", customers);
+				request.setAttribute("image",user );
+				RequestDispatcher rd= request.getRequestDispatcher("/views/manager.jsp");
+				rd.forward(request, response);
+			}
+	        
 		}
 		else if(value.equals("withdraw")|| value.equals("managerwithdraw"))
 		{

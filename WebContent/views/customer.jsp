@@ -23,7 +23,7 @@
 
     <?php include('../header.php'); ?>
 
-	<div id="page-wrap">
+<div id="page-wrap">
 
         <header>
 		  <h1>Customer Page</h1>
@@ -39,71 +39,28 @@
 		  </nav>
 		</header>
 		
-		<section id="main-content">
+<section id="main-content">
 		<li><button onclick="setheight()" style="color:navy; border:thick; font:cursive; border-radius: 10px;" >Account Info</button></li>
-<div id="guts">
-		
-		  
-		
-		          <br>
-		          
-<div id="myDiv">   
+<div id="guts">		          
+		<div id="myDiv">   
 <h2>Account Details</h2>  
 <%@page import="java.util.ArrayList"%>
 <%
 CustomerInfo list=(CustomerInfo)request.getAttribute("xyz");
 %>
-<Center><div id="pricing-table" class="clear">
+<div id="pricing-table" class="clear">
     <div class="plan">
         <ul>
-            <li>Account Number</li>
-            <li>Name</li>
-            <li>Balance</li>
-			<li>Last Visited date</li>			
-        </ul>
-    </div>
-    <div class="plan">
-        <ul>
-            <li><%=list.getAccno() %></li>
-            <li><%=list.getUsername() %></li>
-            <li><%=list.getBalance()%></li>
-			<li><%=list.getLastvisiteddate() %></li>			
-        </ul>
-    </div> 	
-</div></Center></div>
-<%--<Center><table id ="rcorners2" border="4px"  class="rwd-table">
-<tr>
-<td>
-Account Number
-</td>
-<td >
-Name
-</td>
-<td >
-Balance
-</td>
-<td >
-Last Visited Date
-</td>
-</tr>
-
-
-<tr >
-<td ><%=list.getAccno()%></td>
-<td ><%=list.getUsername() %></td>
-<td ><%=list.getBalance()%></td>
-<td ><%=list.getLastvisiteddate() %></td>
-</tr>
-
-
-
-</table></Center>--%>
-	
-		</div>
-		</section>
-		
+            <li>Account Number&nbsp&nbsp:&nbsp&nbsp<%=list.getAccno()%></li>
+            <li>Name&nbsp&nbsp:&nbsp&nbsp<%=list.getUsername()%></li>
+            <li>Balance&nbsp&nbsp:&nbsp&nbsp<%=list.getBalance()%></li>
+            <li>Last Visited Date&nbsp&nbsp:&nbsp&nbsp<%=list.getLastvisiteddate()%></li>
+						
+</ul>
+</div>
 	</div>
-	
+		</div></div>
+	</section></div>
 	<footer>
 	  &copy;Mastan Pvt limited
 	</footer>

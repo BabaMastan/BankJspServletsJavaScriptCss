@@ -93,21 +93,22 @@ nav ul li a:active, nav ul li a.current {
 	border: 1px solid #ddd;
 	color: #0000ff;
 	padding: 20px;
-	width: 180px; /* plan width = 180 + 20 + 20 + 1 + 1 = 222px */      
-	float: left;
+	width: auto; /* plan width = 180 + 20 + 20 + 1 + 1 = 222px */     
 	position: relative;
 }
-#pricing-table .plan:hover{
-	z-index: 2;
-	top: -13px;
+#pricing-table :hover{
+	z-index: 4;
+	top: -10px;
+	color: #ffffff;
+	background: #8080ff;
 	border-width: 3px;
-	padding: 30px 20px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
-	-webkit-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
-	box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);    
+	padding: 40px 60px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 10px;
+	border-radius: 20px;
+	-moz-box-shadow: 40px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .5);
+	-webkit-box-shadow: 40px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .5);
+	box-shadow: 40px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .5);    
 }
 
 /*#pricing-table #most-popular {
@@ -136,7 +137,19 @@ nav ul li a:active, nav ul li a.current {
 }*/
 
 /* --------------- */	
-
+#pricing-table.plan h3 {
+	font-size: 20px;
+	font-weight: normal;
+	padding: 20px;
+	margin: -20px -20px 50px -20px;
+	background-color: #eee;
+	background-image: -moz-linear-gradient(#fff,#eee);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));    
+	background-image: -webkit-linear-gradient(#fff, #eee);
+	background-image: -o-linear-gradient(#fff, #eee);
+	background-image: -ms-linear-gradient(#fff, #eee);
+	background-image: linear-gradient(#fff, #eee);
+}
 #pricing-table h3 {
 	font-size: 20px;
 	font-weight: normal;

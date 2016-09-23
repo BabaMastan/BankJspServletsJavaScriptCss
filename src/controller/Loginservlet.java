@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.CustomerInfo;
+import dao.BankUserPhotoDao;
 import dao.CustomerInfoDAO;
 import dao.LoginDao;
 
@@ -45,7 +46,7 @@ public class Loginservlet extends HttpServlet {
 			CustomerInfoDAO c= new CustomerInfoDAO();
 			ArrayList<CustomerInfo> customers= new ArrayList<CustomerInfo>();
 			customers=c.selectallcustomers();
-			request.setAttribute("key", customers);
+		request.setAttribute("key", customers);
 			RequestDispatcher rd= request.getRequestDispatcher("views/manager.jsp");
 			rd.forward(request, response);
 			
@@ -55,6 +56,7 @@ public class Loginservlet extends HttpServlet {
 			CustomerInfoDAO c= new CustomerInfoDAO();
 			CustomerInfo ci=c.getInfo(username);
 			request.setAttribute("xyz", ci);
+			c.LastVisitedDateupdate(ci.getUsername());
 			RequestDispatcher rd= request.getRequestDispatcher("views/customer.jsp");
 			rd.forward(request, response);
 			

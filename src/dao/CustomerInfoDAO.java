@@ -1,6 +1,8 @@
 package dao;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -107,7 +109,7 @@ public class CustomerInfoDAO {
 		}	
 		return Customerinfo;
 	}
-	public double getBalance(int accno)
+	public String getName(int accno)
 	{
 		Session session = null;
 		CustomerInfo b=new CustomerInfo();
@@ -136,8 +138,8 @@ public class CustomerInfoDAO {
 			session.flush();
 		session.close();
 		}	
-		double bal= Double.parseDouble(b.getBalance());
-		return bal;
+		String name= b.getUsername();
+		return name;
 	}
 	public CustomerInfo deposit(int accno, double depositamount)
 	{
@@ -204,20 +206,12 @@ public class CustomerInfoDAO {
 			 newc=getInfo(b.getUsername());
 			return newc;
 		}
-		
-		public CustomerInfo transferamount(int fromaccno1,int toaccno2,double transferamount)
+public void LastVisitedDateupdate(String username)
 		{
-			CustomerInfo c=withdraw(fromaccno1, transferamount);
-			deposit(toaccno2, transferamount);
-			
-			
-		return c;
-			
-			
-			
-			/*Session session = null;
+			Session session = null;
 			Transaction transaction= null; 
-			CustomerInfo bi=new CustomerInfo();
+			CustomerInfo b=new CustomerInfo();
+			
 			try 
 			{
 				// This step will read hibernate.cfg.xml and prepare hibernate for
@@ -226,56 +220,38 @@ public class CustomerInfoDAO {
 						.buildSessionFactory();
 				session = sessionFactory.openSession();
 				//Criteria Query Example
-				transaction=session.beginTransaction();
 				Criteria crit = session.createCriteria(CustomerInfo.class);
-				crit.add(Restrictions.like("accno", fromaccno1));
+				crit.add(Restrictions.like("username", username));
 				//crit.setMaxResults(20); //Restricts the max rows to 5
-				
 				//List<Employee> list=session.createCriteria(Employee.class).list();
 				List<CustomerInfo> list=crit.list();
-				
-				for(int i=0;i<list.size();i++)
-				{
-					
-					CustomerInfo b=new CustomerInfo();
-					b=list.get(i);
-					double bal=Double.parseDouble(b.getBalance());
-					double newbal=bal-transferamount;
-					b.setBalance(newbal+"");
-					session.update(b);	
-				
-			
-					
-				}
-				Criteria crit1 = session.createCriteria(CustomerInfo.class);
-				crit1.add(Restrictions.like("accno", toaccno2));
-				List<CustomerInfo> list1=crit1.list();
 				transaction=session.beginTransaction();
 				for(int i=0;i<list.size();i++)
-				{
-					
-					
-					bi=list.get(i);
-					double bal=Double.parseDouble(bi.getBalance());
-					double newbal=bal+transferamount;
-					System.out.println(newbal);
-					bi.setBalance(newbal+"");
-					System.out.println(bi.getBalance());
-					session.update(bi);
-					
+				{	
+					b=list.get(i);
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+					Date date = new Date();
+					java.sql.Date dat= new java.sql.Date(date.getTime());;
+					System.out.println(sdf.format(date));
+					b.setLastvisiteddate(dat);
+					session.update(b);		
 				}
 				transaction.commit();
-				
-				
+				session.flush();
+				session.close();
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			} finally {
 				session.flush();
-			session.close();
-			}	
-			CustomerInfo newc= new CustomerInfo();
-			 newc=getInfo(bi.getUsername());
-			return newc;*/
+				session.close();
+			}
 		}
-		
+		public CustomerInfo transferamount(int fromaccno1,int toaccno2,double transferamount)
+		{
+			CustomerInfo c=withdraw(fromaccno1, transferamount);
+			deposit(toaccno2, transferamount);
+			
+			
+		return c;
+		}
 }
